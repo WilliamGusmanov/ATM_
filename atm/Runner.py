@@ -20,7 +20,7 @@ def main():
     atm = ATM(bank)
 
     '''begin atm transaction'''
-    atm.screen.displayHomeScreen()
+    atm.screen.displayHomeScreen('Bank of America')
     atm.screen.displayLogin()
 
     atm.insertCard(williams_debit_card)

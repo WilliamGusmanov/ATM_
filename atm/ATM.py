@@ -14,7 +14,7 @@ class ATM:
 
     def validateCard(self):
         print('validating card')
-        found_account = self.findMatchingAccount(self.card.card_number)
+        found_account = self.findMatchingAccount(self.card.getCardNumber())
 
         # check to see if the account has been found
         if found_account is not None:
