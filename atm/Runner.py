@@ -5,6 +5,7 @@ from atm.Card import Card
 import datetime
 
 # ISAIAH WAS HERE
+# Testing again
 
 def main():
     """initialize initial values"""
@@ -35,8 +36,8 @@ def main():
     # here we enter pin and verify it.
     while not correct_pin:
         pin = input()
-        atm.enterPin(pin)
-        # atm.enterPin('0123')
+        correct_pin = atm.enterPin(pin)
+        #atm.enterPin('0123')
 
     continue_transaction = True
     while continue_transaction:

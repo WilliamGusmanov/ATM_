@@ -10,7 +10,7 @@ class ATM:
         self.bankAccount = None
         self.screen = Screen()
         self.attempts = 0
-        self.maxAttempts = 3
+        self.maxAttempts = 2
 
     def validateCard(self):
         print('validating card')
@@ -48,6 +48,7 @@ class ATM:
             print('depositing funds')
             return True
         elif number == 1:
+            self.callWithdrawal()
             print('withdrawing funds')
             return True
         elif number == 2:
@@ -59,3 +60,6 @@ class ATM:
         else:
             self.screen.displayExitMessage()
             return False
+
+    def callWithdrawal(self):
+        print("Withdrawal that money")
