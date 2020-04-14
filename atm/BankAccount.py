@@ -30,3 +30,6 @@ class BankAccount:
             return self.pin_number
         else:
             raise Exception('there is no pin number.')
+
+    def getCardID(self):
+        return self.card.getCardNumber()

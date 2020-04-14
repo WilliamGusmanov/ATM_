@@ -35,7 +35,7 @@ def main():
     # here we enter pin and verify it.
     while not correct_pin:
         pin = input()
-        correct_pin = atm.enterPin(pin)
+        atm.enterPin(pin)
         # atm.enterPin('0123')
 
     continue_transaction = True
