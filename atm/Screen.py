@@ -2,7 +2,7 @@ class Screen:
 
     @staticmethod
     def promptPin():
-        print('Please enter your Pin Number.')
+        print('Please enter your Pin Number: ')
 
     @staticmethod
     def displayLogin():
@@ -31,3 +31,27 @@ class Screen:
     @staticmethod
     def displayExitMessage():
         print("Thank you, Goodbye!")
+
+    @staticmethod
+    def displaySuccessfulValidation():
+        print('no errors found.')
+
+    @staticmethod
+    def displayIncorrectPin():
+        print("Incorrect PIN entered.")
+
+    @staticmethod
+    def displaySuccessfulPin():
+        print("correct pin.")
+
+    @staticmethod
+    def displayAttemptsRemaining(attempts):
+        print("You have " + attempts + " attempts remaining")
+
+    @staticmethod
+    def displayPromptAccountName():
+        print("Please enter the name of the account: ")
+
+    @staticmethod
+    def displayBalance(message):
+        print(message)
