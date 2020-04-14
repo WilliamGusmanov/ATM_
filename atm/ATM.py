@@ -4,7 +4,6 @@ from atm.Screen import Screen
 
 class ATM:
     def __init__(self, bank):
-        print('initializing atm')
         self.bank = bank  # initialize bank
         self.card = None
         self.bankAccount = None
@@ -13,7 +12,6 @@ class ATM:
         self.maxAttempts = 2
 
     def validateCard(self):
-        print('validating card')
         found_account = self.findMatchingAccount(self.card.getCardNumber())
 
         # check to see if the account has been found
@@ -23,7 +21,6 @@ class ATM:
             raise Exception('There is no account associated with debit card.')
 
     def insertCard(self, inserted_card):
-        print('inserting card')
         self.card = inserted_card
         self.attempts = 0
 
@@ -34,6 +31,7 @@ class ATM:
             if self.bankAccount.getPinNumber() == pin_number:
                 return True
             else:
+                self.screen.displayAttemptsRemaining(str(self.maxAttempts - self.attempts))
                 self.attempts = self.attempts + 1
                 return False
         raise Exception('You have exceeded the maximum number of attempts.')
@@ -43,7 +41,7 @@ class ATM:
             if account.getCardID() == user_account_card_id:
                 return account
 
-    def Options(self, number):
+    def options(self, number):
         if number == 0:
             print('depositing funds')
             return True
@@ -52,7 +50,10 @@ class ATM:
             print('withdrawing funds')
             return True
         elif number == 2:
-            print('displaying balance')
+            self.screen.displayPromptAccountName()
+            account_name = input()
+            answer = self.callDisplayBalance(account_name)
+            self.screen.displayBalance(answer)
             return True
         elif number == 3:
             print('transferring funds')
@@ -63,3 +64,7 @@ class ATM:
 
     def callWithdrawal(self):
         print("Withdrawal that money")
+
+    def callDisplayBalance(self, account_name):
+        account_name = account_name.lower()
+        return self.bankAccount.getAccountBalance(account_name)
