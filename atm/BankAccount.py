@@ -33,3 +33,12 @@ class BankAccount:
 
     def getCardID(self):
         return self.card.getCardNumber()
+
+    def getAccountBalance(self, account_name):
+        i = 0
+        while i < len(self.user_accounts_list):
+            if self.user_accounts_list[i].getAccountName() == account_name:
+                amount = self.user_accounts_list[i].getBalance()
+                return account_name + " has $" + str(amount)
+            i = i + 1
+        raise Exception(account_name + " is not a valid account.")

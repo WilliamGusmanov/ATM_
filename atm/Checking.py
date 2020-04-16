@@ -14,6 +14,7 @@ class Checking(Account):
         return Checking._instance
 
     def __init__(self, account_name, initial_balance):
+        super().__init__(account_name, initial_balance)
         self.account_name = account_name
         self.balance = initial_balance
         if Checking._instance is not None:
