@@ -63,7 +63,15 @@ class ATM:
             return False
 
     def callWithdrawal(self):
-        print("Withdrawal that money")
+        self.screen.displayAccountsList(self.bankAccount.user_accounts_list)
+        answer = input()
+
+        for account in self.bankAccount.user_accounts_list:
+            if account.getAccountName() == answer:
+                self.screen.displayAskWithdrawal()
+                decreaseBal = input()
+                self.screen.displayWithdrawalMessage(decreaseBal)
+                account.decreaseBalance(int(decreaseBal))
 
     def callDisplayBalance(self, account_name):
         account_name = account_name.lower()
