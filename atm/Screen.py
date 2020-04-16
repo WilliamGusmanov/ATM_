@@ -66,3 +66,8 @@ class Screen:
     @staticmethod
     def displayAskWithdrawal():
         print("How much would you like to withdrawal?")
+
+    @staticmethod
+    def displayOverWithdrawal():
+        print("You withdrawal exceeds the amount in your account"
+              "Please try again")

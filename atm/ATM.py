@@ -69,8 +69,12 @@ class ATM:
             if account.getAccountName() == answer:
                 self.screen.displayAskWithdrawal()
                 decreaseBal = input()
-                self.screen.displayWithdrawalMessage(decreaseBal)
-                account.decreaseBalance(int(decreaseBal))
+                while int(decreaseBal) > account.getBalance():
+                    self.screen.displayOverWithdrawal()
+                    decreaseBal = input()
+                else:
+                    self.screen.displayWithdrawalMessage(decreaseBal)
+                    account.decreaseBalance(int(decreaseBal))
 
     def callDisplayBalance(self, account_name):
         account_name = account_name.lower()
