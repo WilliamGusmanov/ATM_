@@ -47,6 +47,7 @@ class ATM:
             return True
         elif number == 1:
             self.callWithdrawal()
+            print('withdrawing funds')
             return True
         elif number == 2:
             self.screen.displayPromptAccountName()

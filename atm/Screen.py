@@ -55,14 +55,3 @@ class Screen:
     @staticmethod
     def displayBalance(message):
         print(message)
-
-    @staticmethod
-    def displayAccountsList(accountList):
-        print("Which account would you like to withdrawal from?")
-        print("Your accounts: ", end = '')
-        for account in accountList:
-            print(account.getAccountName() + ", ", end = '')
-
-    @staticmethod
-    def displayAskWithdrawal():
-        print("How much would you like to withdrawal?")
