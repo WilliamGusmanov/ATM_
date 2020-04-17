@@ -47,9 +47,9 @@ class ATM:
             return True
         elif number == 1:
             self.callWithdrawal()
-            print('withdrawing funds')
             return True
         elif number == 2:
+            self.screen.displayAccountsList(self.bankAccount.user_accounts_list)
             self.screen.displayPromptAccountName()
             account_name = input()
             answer = self.callDisplayBalance(account_name)
@@ -64,6 +64,7 @@ class ATM:
 
     def callWithdrawal(self):
         self.screen.displayAccountsList(self.bankAccount.user_accounts_list)
+        self.screen.promptWithdrawQuestion()
         answer = input()
 
         for account in self.bankAccount.user_accounts_list:

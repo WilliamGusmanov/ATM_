@@ -57,11 +57,15 @@ class Screen:
         print(message)
 
     @staticmethod
-    def displayAccountsList(accountList):
-        print("Which account would you like to withdrawal from?")
+    def displayAccountsList(account_list):
         print("Your accounts: ", end = '')
-        for account in accountList:
-            print(account.getAccountName() + ", ", end = '')
+        message = list("")
+        for account in account_list:
+            message.append(account.getAccountName())
+            message.append(", ")
+        message[len(message) - 1] = ""
+        string = "".join(message)
+        print(string)
 
     @staticmethod
     def displayAskWithdrawal():
@@ -70,3 +74,7 @@ class Screen:
     @staticmethod
     def displayOverWithdrawal():
         print("You are exceeding the amount of your bank account, please try again")
+
+    @staticmethod
+    def promptWithdrawQuestion():
+        print("Which account would you like to withdrawal from?")
