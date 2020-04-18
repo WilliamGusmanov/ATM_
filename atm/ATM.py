@@ -43,7 +43,7 @@ class ATM:
 
     def options(self, number):
         if number == 0:
-            print('depositing funds')
+            self.callDeposit()
             return True
         elif number == 1:
             self.callWithdrawal()
@@ -51,7 +51,7 @@ class ATM:
         elif number == 2:
             self.screen.displayAccountsList(self.bankAccount.user_accounts_list)
             self.screen.displayPromptAccountName()
-            account_name = input()
+            account_name = input().lower()
             answer = self.callDisplayBalance(account_name)
             self.screen.displayBalance(answer)
             return True
@@ -65,7 +65,7 @@ class ATM:
     def callWithdrawal(self):
         self.screen.displayAccountsList(self.bankAccount.user_accounts_list)
         self.screen.promptWithdrawQuestion()
-        answer = input()
+        answer = input().lower()
 
         for account in self.bankAccount.user_accounts_list:
             if account.getAccountName() == answer:
@@ -80,3 +80,20 @@ class ATM:
     def callDisplayBalance(self, account_name):
         account_name = account_name.lower()
         return self.bankAccount.getAccountBalance(account_name)
+
+
+    def callDeposit(self):
+        self.screen.displayAccountsList(self.bankAccount.user_accounts_list)
+        self.screen.promptDepositQuestion()
+        answer = input().lower()
+
+        for account in self.bankAccount.user_accounts_list:
+            if account.getAccountName() == answer:
+                self.screen.displayAskDeposit()
+                increaseBal = input()
+                self.screen.displayDepositMessage(increaseBal, account.getAccountName())
+                account.addBalance(int(increaseBal))
+
+
+
+

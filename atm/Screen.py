@@ -67,6 +67,8 @@ class Screen:
         string = "".join(message)
         print(string)
 
+
+    # Withdraw Functions
     @staticmethod
     def displayAskWithdrawal():
         print("How much would you like to withdrawal?")
@@ -78,3 +80,16 @@ class Screen:
     @staticmethod
     def promptWithdrawQuestion():
         print("Which account would you like to withdrawal from?")
+
+
+    # Deposit Functions
+    @staticmethod
+    def displayAskDeposit():
+        print("How much would you like to deposit?")
+
+    @staticmethod
+    def promptDepositQuestion():
+        print("Which account would you like to deposit into?")
+
+
+
