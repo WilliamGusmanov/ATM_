@@ -103,11 +103,11 @@ class ATM:
         transferAmount = 0
 
         # If account exists, select and validate transfer amount.
-        for account1 in self.bankAccount.user_accounts_list:
-            if account1.getAccountName() == donor:
+        for donorAccount in self.bankAccount.user_accounts_list:
+            if donorAccount.getAccountName() == donor:
                 self.screen.selectTransferAmount()
                 transferAmount = input()
-                while int(transferAmount) > account1.getBalance():
+                while int(transferAmount) > donorAccount.getBalance():
                     self.screen.displayOverWithdrawal()
                     transferAmount = input()
                 # Select recipient account.
@@ -115,12 +115,12 @@ class ATM:
                 recipient = input().lower()
 
                 # Find recipient account, confirm, then transfer.
-                for account2 in self.bankAccount.user_accounts_list:
-                    if account2.getAccountName() == recipient:
+                for recipientAccount in self.bankAccount.user_accounts_list:
+                    if recipientAccount.getAccountName() == recipient:
                         verify = self.screen.confirmTransfer()
                         # input validation & break in case "no" goes here.
                         if int(verify) == 1:
-                            account1.decreaseBalance(int(transferAmount))
-                            account2.addBalance(int(transferAmount))
+                            donorAccount.decreaseBalance(int(transferAmount))
+                            recipientAccount.addBalance(int(transferAmount))
 
 
