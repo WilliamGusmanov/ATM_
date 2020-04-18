@@ -2,7 +2,7 @@ class Screen:
 
     @staticmethod
     def promptPin():
-        print('Please enter your Pin Number.')
+        print('Please enter your Pin Number: ')
 
     @staticmethod
     def displayLogin():
@@ -31,3 +31,50 @@ class Screen:
     @staticmethod
     def displayExitMessage():
         print("Thank you, Goodbye!")
+
+    @staticmethod
+    def displaySuccessfulValidation():
+        print('no errors found.')
+
+    @staticmethod
+    def displayIncorrectPin():
+        print("Incorrect PIN entered.")
+
+    @staticmethod
+    def displaySuccessfulPin():
+        print("correct pin.")
+
+    @staticmethod
+    def displayAttemptsRemaining(attempts):
+        print("You have " + attempts + " attempts remaining")
+
+    @staticmethod
+    def displayPromptAccountName():
+        print("Please enter the name of the account: ")
+
+    @staticmethod
+    def displayBalance(message):
+        print(message)
+
+    @staticmethod
+    def displayAccountsList(account_list):
+        print("Your accounts: ", end = '')
+        message = list("")
+        for account in account_list:
+            message.append(account.getAccountName())
+            message.append(", ")
+        message[len(message) - 1] = ""
+        string = "".join(message)
+        print(string)
+
+    @staticmethod
+    def displayAskWithdrawal():
+        print("How much would you like to withdrawal?")
+
+    @staticmethod
+    def displayOverWithdrawal():
+        print("You are exceeding the amount of your bank account, please try again")
+
+    @staticmethod
+    def promptWithdrawQuestion():
+        print("Which account would you like to withdrawal from?")
