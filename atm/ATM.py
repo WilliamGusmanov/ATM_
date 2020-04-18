@@ -43,7 +43,7 @@ class ATM:
 
     def options(self, number):
         if number == 0:
-            print('depositing funds')
+            self.callDeposit()
             return True
         elif number == 1:
             self.callWithdrawal()
@@ -51,12 +51,12 @@ class ATM:
         elif number == 2:
             self.screen.displayAccountsList(self.bankAccount.user_accounts_list)
             self.screen.displayPromptAccountName()
-            account_name = input()
+            account_name = input().lower()
             answer = self.callDisplayBalance(account_name)
             self.screen.displayBalance(answer)
             return True
         elif number == 3:
-            print('transferring funds')
+            self.callTransferFunds()
             return True
         else:
             self.screen.displayExitMessage()
@@ -65,7 +65,7 @@ class ATM:
     def callWithdrawal(self):
         self.screen.displayAccountsList(self.bankAccount.user_accounts_list)
         self.screen.promptWithdrawQuestion()
-        answer = input()
+        answer = input().lower()
 
         for account in self.bankAccount.user_accounts_list:
             if account.getAccountName() == answer:
@@ -80,3 +80,47 @@ class ATM:
     def callDisplayBalance(self, account_name):
         account_name = account_name.lower()
         return self.bankAccount.getAccountBalance(account_name)
+
+
+    def callDeposit(self):
+        self.screen.displayAccountsList(self.bankAccount.user_accounts_list)
+        self.screen.promptDepositQuestion()
+        answer = input().lower()
+
+        for account in self.bankAccount.user_accounts_list:
+            if account.getAccountName() == answer:
+                self.screen.displayAskDeposit()
+                increaseBal = input()
+                self.screen.displayDepositMessage(increaseBal, account.getAccountName())
+                account.addBalance(int(increaseBal))
+
+    def callTransferFunds(self):
+
+        # Ask for donor account.
+        self.screen.promptDonorAccount()
+        self.screen.displayAccountsList(self.bankAccount.user_accounts_list)
+        donor = input().lower()
+        transferAmount = 0
+
+        # If account exists, select and validate transfer amount.
+        for donorAccount in self.bankAccount.user_accounts_list:
+            if donorAccount.getAccountName() == donor:
+                self.screen.selectTransferAmount()
+                transferAmount = input()
+                while int(transferAmount) > donorAccount.getBalance():
+                    self.screen.displayOverWithdrawal()
+                    transferAmount = input()
+                # Select recipient account.
+                self.screen.promptRecipientAccount()
+                recipient = input().lower()
+
+                # Find recipient account, confirm, then transfer.
+                for recipientAccount in self.bankAccount.user_accounts_list:
+                    if recipientAccount.getAccountName() == recipient:
+                        verify = self.screen.confirmTransfer()
+                        # input validation & break in case "no" goes here.
+                        if int(verify) == 1:
+                            donorAccount.decreaseBalance(int(transferAmount))
+                            recipientAccount.addBalance(int(transferAmount))
+
+
