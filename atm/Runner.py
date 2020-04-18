@@ -43,7 +43,7 @@ def main():
         message = 'press [0] for deposit funds \n press [1] for withdraw funds \n press [2] for display balance \n ' \
                   'press [3] for transfer funds \n press any other key to exit'
         atm.screen.displayOptions(message) # display options
-        input_number = input()
+        input_number = int(input())
         continue_transaction = atm.Options(input_number)
 
 
