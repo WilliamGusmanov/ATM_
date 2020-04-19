@@ -7,12 +7,6 @@ from atm.Account import Account
 class Checking(Account):
     _instance = None
 
-    @staticmethod
-    def getChecking():
-        if Checking._instance is None:
-            Checking()
-        return Checking._instance
-
     def __init__(self, account_name, initial_balance):
         super().__init__(account_name, initial_balance)
         self.account_name = account_name
