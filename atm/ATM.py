@@ -73,6 +73,11 @@ class ATM:
             if account.getAccountName() == answer:
                 self.screen.displayAskWithdrawal()
                 decreaseBal = input()
+
+                while not decreaseBal.isnumeric():
+                    self.screen.displayAskWithdrawal()
+                    decreaseBal = input()
+
                 while int(decreaseBal) > account.getBalance():
                     self.screen.displayOverWithdrawal()
                     decreaseBal = input()
@@ -104,6 +109,11 @@ class ATM:
             if account.getAccountName() == answer:
                 self.screen.displayAskDeposit()
                 increaseBal = input()
+
+                while not increaseBal.isnumeric():
+                    self.screen.displayAskDeposit()
+                    increaseBal = input()
+
                 self.screen.displayDepositMessage(increaseBal, account.getAccountName())
                 account.addBalance(int(increaseBal))
                 return
@@ -121,9 +131,15 @@ class ATM:
             if donorAccount.getAccountName() == donor:
                 self.screen.selectTransferAmount()
                 transferAmount = input()
+
+                while not transferAmount.isnumeric():
+                    self.screen.selectTransferAmount()
+                    transferAmount = input()
+
                 while int(transferAmount) > donorAccount.getBalance():
                     self.screen.displayOverWithdrawal()
                     transferAmount = input()
+
                 # Select recipient account.
                 self.screen.promptRecipientAccount()
                 recipient = input().lower()
