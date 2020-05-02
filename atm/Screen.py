@@ -18,7 +18,7 @@ class Screen:
 
     @staticmethod
     def displayWithdrawalMessage(amount):
-        print('Withdrawing ' + amount)
+        print('Withdrawing $' + amount)
 
     @staticmethod
     def displayDepositMessage(amount, account_name):
@@ -26,7 +26,7 @@ class Screen:
 
     @staticmethod
     def displayTransferMessage(amount, account_name1, account_name2):
-        print("Transferring " + amount + " between " + account_name1 + " and " + account_name2)
+        print("Transferring $" + amount + " from " + account_name1 + " to " + account_name2)
 
     @staticmethod
     def displayExitMessage():
@@ -67,6 +67,9 @@ class Screen:
         string = "".join(message)
         print(string)
 
+    @staticmethod
+    def displayAccountNotFound(account_name):
+        print(account_name + ' not found.')
 
     # Withdraw Functions
 
