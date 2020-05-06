@@ -81,7 +81,7 @@ class ATM:
                 while int(decreaseBal) > account.getBalance():
                     self.screen.displayOverWithdrawal()
                     decreaseBal = input()
-                self.screen.displayWithdrawalMessage(decreaseBal)
+                self.screen.displayWithdrawalMessage(decreaseBal, answer)
                 account.decreaseBalance(int(decreaseBal))
                 return
         self.screen.displayAccountNotFound(answer)
