@@ -17,8 +17,8 @@ class Screen:
         print(message)
 
     @staticmethod
-    def displayWithdrawalMessage(amount):
-        print('Withdrawing $' + amount)
+    def displayWithdrawalMessage(amount, account_name):
+        print('Withdrawing $' + amount + ' from ' + account_name)
 
     @staticmethod
     def displayDepositMessage(amount, account_name):
